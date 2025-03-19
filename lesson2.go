@@ -47,4 +47,13 @@ func main() {
 	fmt.Println(central, len(central))
 	central = append(central, county...)
 	fmt.Println(central, ":", len(central))
+
+	w := [6]int{58, 67, 32, 94, 46, 89}
+	u := w[1:3]
+	v := w[4:]
+	fmt.Println(w, "|", u, "|", v)
+
+	z := make([]int, 4)
+	tot := copy(z, u)
+	fmt.Println(z, tot)
 }
