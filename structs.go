@@ -23,5 +23,24 @@ func main() {
 		"Kenya",
 	}
 	fmt.Println(ochola)
-	fmt.Println(ochola.name)
+	fmt.Println(ochola.name) // accessing values in struct
+
+	//anonymous struct-declare that a variable implements a struct type without first giving the struct type a name
+	var person struct {
+		name string
+		age  int
+		pet  string
+	}
+	person.name = "Ivy"
+	person.age = 32
+	person.pet = "lulu"
+
+	pet := struct {
+		name string
+		kind string
+	}{
+		name: "Khaleesi",
+		kind: "dog",
+	}
+	fmt.Println(pet)
 }
