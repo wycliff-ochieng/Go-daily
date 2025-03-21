@@ -56,4 +56,7 @@ func main() {
 	z := make([]int, 4)
 	tot := copy(z, u)
 	fmt.Println(z, tot)
+	
+	//strings runes and bytes- go uses a series of bytes to represent strings
+
 }
