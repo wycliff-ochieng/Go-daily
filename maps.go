@@ -5,6 +5,7 @@ import "fmt"
 func main() {
 	//var m map[key_type]value_type
 	//make - m := make(map[key_type]value_type)
+	//reading and writing to a map
 
 	teams := map[string][]string{
 		"England": []string{"Arsenal", "Manchester united", "WestHam"},

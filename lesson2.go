@@ -58,5 +58,6 @@ func main() {
 	fmt.Println(z, tot)
 	
 	//strings runes and bytes- go uses a series of bytes to represent strings
+	teams := map[string][]string{}
 
 }
