@@ -11,7 +11,5 @@ func main() {
 		fmt.Println(j)
 	}
 	//for, four ways
-	for i := 0; i < 15; i++ {
-		fmt.Println("Today im fucked, messed me up badly")
-	}
+	s
 }
