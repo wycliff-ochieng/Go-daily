@@ -32,10 +32,10 @@ func main() {
 		fmt.Printf("%d. %s\n", i+1, t)
 
 	}
-	/*func add(a int, b int) int {
+func add(a int, b int) int {
 	  	return a + b
-	  }
-	  func greet(name string) string {
+	}
+func greet(name string) string {
 	  	maneno := fmt.Sprintf("Hello my good friend %s", name)
 	  	//fmt.Println("helloo my good friend %s \n", name)
 	  	fmt.Println(maneno)

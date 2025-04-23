@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"time"
 )
@@ -47,4 +46,8 @@ func addTask(description string, filename string) error{
 	fmt.Println("Task loaded successfuly",len(task))
 
 	return nil
+}
+
+func listTask(task []Task)([]Task,error){
+	if _,err
 }
