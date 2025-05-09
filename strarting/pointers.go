@@ -27,6 +27,13 @@ func (u *User) updateEmailAgain(email string) string {
 	return email
 }
 
+func changeValue(str *string) {
+	*str = "changed"
+}
+func changevalue2(str string) {
+	str = "changed"
+}
+
 func main() {
 	fmt.Println("pointers .... ")
 	user := User{
@@ -35,5 +42,10 @@ func main() {
 	user.updateEmail("aggg@bar.com")
 	user.updateEmailAgain("yoo@bitch.com")
 	fmt.Println(user.Email())
+
+	toChange := "hello"
+	fmt.Println(toChange)
+	changeValue(&toChange)
+	fmt.Println(toChange)
 
 }

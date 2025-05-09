@@ -1,9 +1,7 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
-	"os"
 	"time"
 )
 
@@ -11,43 +9,66 @@ func main() {
 	fmt.Println("Starting in a few...... ")
 }
 
-type Task struct{
-	id int32
-	title string
-	completed bool
+type Task struct {
+	id            int32
+	title         string
+	completed     bool
 	creation_time time.Time
 }
 
-func loadTask(filename string)([]Task,error){
-	if _,err := os.Stat(filename);os.IsNotExist(err){
-		return []Task{},nil
+func ListTask(status status) error {
+	tasks, err := ReadTaskFromList()
+	if err != nil {
+		return err
 	}
-	data,err := os.ReadFile(filename)
-	if err != nil{
-		return nil,err
+	if len(tasks) == 0 {
+		fmt.Println("No Tasks Found!!!!")
+		return nil
 	}
-	var task []Task
-	err = json.Unmarshal(data,&task)
-	if err != nil{
-		return nil,err
-	}
-	return task,err
-}
 
-func addTask(description string, filename string) error{
-	if description == ""{
-		fmt.Errorf("Description cannot be empty")
+	var filteredTasks []Task
+	switch status {
+	case "all":
+		filteredTasks == tasks
+	case STATUS_TODO:
+		for _, task := range tasks {
+			if task.Status == STATUS_TODO {
+				filteredTasks = append(filteredTasks, task)
+			}
+		}
+	case STATUS_IN_PROGRESS:
+		for _, task := range tasks {
+			if task.Status == STATUS_IN_PROGRESS {
+				filteredTasks = append(filteredTasks, task)
+			}
+		}
+	case STATUS_DONE:
+		for _, task := range tasks {
+			if task.Status == STATUS_DONE {
+				filteredTasks = append(filteredTasks, task)
+			}
+		}
 	}
-	task,err := loadTask(filename)
-	if err != nil{
-		return  nil
-	}
-	fmt.Println("This is a valid desc", description)
-	fmt.Println("Task loaded successfuly",len(task))
-
+	fmt.Println("Tasks %s", tasks)
 	return nil
 }
 
-func listTask(task []Task)([]Task,error){
-	if _,err
+func AddTasks(description string) error {
+	tasks, err := ReadTaskFromFile()
+	if err != nil {
+		return err
+	}
+
+	var newTaskID int32
+	if len(tasks) > 0 {
+		lastTask := tasks[len(tasks)-1]
+		newTaskID = lastTask.ID + 1
+	} else {
+		newTaskID = 0
+	}
+
+	task := NewTask(newTaskID, description)
+	tasks = append(tasks, *task)
+	fmt.Println("Task added succesfully %s", task)
+	return writeTaskToFile(task)
 }

@@ -76,3 +76,4 @@ func fileChecker(name string) error {
 	f.Close()
 	return nil
 }
+
